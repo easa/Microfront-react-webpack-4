@@ -1,5 +1,5 @@
 {
-  "name": "avanza_app",
+  "name": "backend",
   "version": "1.0.0",
   "description": "Trader application working on Avanza API",
   "main": "src/app.ts",
@@ -10,11 +10,7 @@
     "build": "tsc --project tsconfig.json",
     "lint": "eslint --fix ./src"
   },
-  "keywords": [
-    "trador bot",
-    "avanza",
-    "banking"
-  ],
+  "keywords": [],
   "author": "easa",
   "license": "ISC",
   "devDependencies": {
