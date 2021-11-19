@@ -1,0 +1,10 @@
+{
+  "name": "sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "author": "easa <eisanodehi@gmail.com>",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
