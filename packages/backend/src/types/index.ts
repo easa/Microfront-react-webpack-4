@@ -4,7 +4,7 @@ export interface Level { buy: Side; sell: Side; }
 
 export type Callback<T> = (prop: T) => void;
 
-export type Broker = 'avanza' | 'pmc';
+export type Broker = 'bank1' | 'bank2';
 
 export type RunningStatus = 'play' | 'pause';
 

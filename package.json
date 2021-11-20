@@ -4,6 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "author": "easa <eisanodehi@gmail.com>",
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "tsc -b packages/container",
+    "test": "lerna run test",
+    "clean": "npx rimraf packages/**/lib"
+  },
   "devDependencies": {
     "lerna": "^4.0.0"
   }

@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "Trader application working on Avanza API",
+  "description": "Trader application",
   "main": "src/app.ts",
   "scripts": {
     "start": "nodemon --watch src --exec ts-node -r dotenv/config src/app.ts",

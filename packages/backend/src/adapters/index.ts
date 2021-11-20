@@ -1,13 +1,11 @@
-import type { OrderDepthsCallBack } from './adapter.types';
-import { subscribeToOrderDepths } from './avanza/subscribe';
-
-type Broker = 'avanza' | 'pmc';
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import type { OrderDepthsCallBack, Broker } from './adapter.types';
 
 const brokers = {
-  avanza: {
-    orderDepth: subscribeToOrderDepths,
+  bank1: {
+    orderDepth: (..._arg: any[]) => () => { },
   },
-  pmc: {
+  bank2: {
     orderDepth: () => () => { },
   },
 };

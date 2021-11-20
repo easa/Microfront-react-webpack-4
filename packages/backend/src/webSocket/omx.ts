@@ -1,14 +1,18 @@
 import WebSocket from 'ws';
-import avanza from '../adapters/avanza/avanza';
 import { logger } from '../logger';
-
-const orderBookId = '19002'; // OMX
 
 const omxWebsocket = (ws: WebSocket) => {
   try {
-    const unsubscribe = avanza.subscribe('quotes', orderBookId, ({ lastPrice }) => {
-      ws.send(JSON.stringify({ omx: lastPrice.toFixed(2) }));
-    });
+    const subscribe = () => {
+      const interval = setInterval(() => {
+        const lastPrice = Math.random().toFixed(5);
+        ws.send(JSON.stringify({ omx: lastPrice }));
+      }, 1000);
+      return () => {
+        clearInterval(interval);
+      };
+    };
+    const unsubscribe = subscribe();
     ws.on('close', () => {
       try {
         unsubscribe();
@@ -19,4 +23,5 @@ const omxWebsocket = (ws: WebSocket) => {
     logger({ websocketE });
   }
 };
+
 export default omxWebsocket;
