@@ -5,12 +5,11 @@ import CardTable from './CardTable';
 import {
   NI, Order, Position, OrderDepth,
 } from './types';
-import StrategyName from './Orders/StrategyName';
 import useCard from './useCard';
-import SelectStrategy from './Orders/SelectStrategy';
 import CardTableSimple from './CardTableSimple';
 import OrderLine from './MyOrder/OrderLine';
-import { httpDelete } from '../../Types/helpers/http';
+import { useDispatch } from 'react-redux';
+import { createAction } from '@reduxjs/toolkit';
 
 function CardContainer({
   orderBook, strategy = undefined, position, orders, queues,
@@ -21,11 +20,15 @@ function CardContainer({
   queues?: OrderDepth[];
   orders?: Order[];
 }) {
+  const act = createAction('sub', (st) => {
+    return st
+  })
+  const dispatch = useDispatch()
   const { tableProps, orderBookName } = useCard({
     orderBook, queues, orders, position,
   });
   const handleStop = (id: string) => {
-    httpDelete(`/orderbook/subscribe/${id}`);
+    dispatch(act);
   };
   return (
     <div data-orderbookid={orderBook.id}>
@@ -36,9 +39,6 @@ function CardContainer({
         <div className="uk-card-body uk-text-center">
           <div style={{ marginTop: '-25px' }}>
             <div style={{ display: 'inline-block', width: '100px', float: 'left' }}>
-              {strategy && <StrategyName {...strategy} orderBookId={orderBook.id} />}
-
-              {!strategy && <SelectStrategy orderBookId={orderBook.id} />}
             </div>
             <div style={{ display: 'inline-block', width: '100px', float: 'right' }}>
               <button

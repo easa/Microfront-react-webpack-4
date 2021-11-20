@@ -1,20 +1,14 @@
+import { createAction } from '@reduxjs/toolkit';
 import React, { useEffect, useState } from 'react';
-import { httpGet, httpPost } from '../../../Types/helpers/http';
+import { useDispatch } from 'react-redux';
 
 function SelectStrategy({ orderBookId }: { orderBookId: string }) {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [strategies, setStrategies] = useState<{ params: unknown, id: string, name: string }[]>([]);
+  const dispatch = useDispatch();
   useEffect(() => {
-    httpGet<{
-      error: string;
-      strategies: { params: unknown, id: string, name: string }[];
-    }>('/strategies').then(({ error, strategies: str }) => {
-      if (error) {
-        setIsLoading(true);
-      } else {
-        setStrategies(str);
-      }
-    });
+    setIsLoading(false);
+    // setStrategies(str);
   }, []);
   return (
     <div className="uk-form-select" data-uk-form-select>
@@ -25,9 +19,10 @@ function SelectStrategy({ orderBookId }: { orderBookId: string }) {
             className="uk-button small uk-card-primary"
             onChange={(event) => {
               const strategyName = event.target.value;
-              httpPost('/orderbook/strategy', { orderBookId, strategyName }).then(() => {
-                setIsLoading(true);
-              });
+              const addStrategy = createAction('strategy', (state) => {
+                return state
+              })
+              dispatch(addStrategy({ orderBookId, strategyName }));
             }}
           >
             <option>select a strategy</option>

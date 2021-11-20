@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState } from 'react';
-import { httpDelete } from '../../../Types/helpers/http';
 
 function strategyName({ name, orderBookId }: { name: string; orderBookId: string; }) {
   const [isLoading, setIsLoaing] = useState<boolean>(false);
@@ -23,9 +22,6 @@ function strategyName({ name, orderBookId }: { name: string; orderBookId: string
                 type="button"
                 data-uk-close
                 onClick={() => {
-                  httpDelete(`/orderbook/strategy/${orderBookId}`).then(() => {
-                    setIsLoaing(true);
-                  });
                 }}
               />
             </div>

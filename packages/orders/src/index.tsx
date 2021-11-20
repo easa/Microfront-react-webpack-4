@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './components/home/App';
 
 // @ts-ignore
 window.renderOrder = (containerId: string, history: unknown) => {

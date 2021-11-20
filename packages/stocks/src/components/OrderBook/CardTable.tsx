@@ -27,7 +27,17 @@ function CardTable(props: {
             {myVolume(queue[1].sell.price)}
           </td>
           <td>
-            <button className="uk-button uk-button-default text uk-text-success" type="button">
+            <button
+              onClick={() => {
+                const event = new CustomEvent('addOrder', {
+                  detail: {
+                    price: queue[1].sell.price,
+                    volume: queue[1].sell.volume
+                  }
+                })
+                dispatchEvent(event)
+              }}
+              className="uk-button uk-button-default text uk-text-success" type="button">
               $
               {queue[1].sell.price}
             </button>
@@ -44,7 +54,17 @@ function CardTable(props: {
             {myVolume(queue[0].sell.price)}
           </td>
           <td>
-            <button className="uk-button uk-button-default text uk-text-success" type="button">
+            <button
+              onClick={() => {
+                const event = new CustomEvent('addOrder', {
+                  detail: {
+                    price: queue[0].sell.price,
+                    volume: queue[0].sell.volume
+                  }
+                })
+                dispatchEvent(event)
+              }}
+              className="uk-button uk-button-default text uk-text-success" type="button">
               $
               {queue[0].sell.price}
             </button>
@@ -61,7 +81,17 @@ function CardTable(props: {
             {myVolume(queue[0].buy.price)}
           </td>
           <td>
-            <button className="uk-button uk-button-default text uk-text-danger" type="button">
+            <button
+              onClick={() => {
+                const event = new CustomEvent('addOrder', {
+                  detail: {
+                    price: queue[0].buy.price,
+                    volume: queue[0].buy.volume
+                  }
+                })
+                dispatchEvent(event)
+              }}
+              className="uk-button uk-button-default text uk-text-danger" type="button">
               $
               {queue[0].buy.price}
             </button>
@@ -76,7 +106,17 @@ function CardTable(props: {
             {myVolume(queue[1].buy.price)}
           </td>
           <td>
-            <button className="uk-button uk-button-default text uk-text-danger" type="button">
+            <button
+              onClick={() => {
+                const event = new CustomEvent('addOrder', {
+                  detail: {
+                    price: queue[1].buy.price,
+                    volume: queue[1].buy.volume
+                  }
+                })
+                dispatchEvent(event)
+              }}
+              className="uk-button uk-button-default text uk-text-danger" type="button">
               $
               {queue[1].buy.price}
             </button>

@@ -31,9 +31,16 @@ function BlogDetail({ history }: { history: History }) {
 function Home({ history }: { history: History }) {
 
   return (
-    <div className="container">
-      <Order history={defaultHistory} />
-      <Stock history={defaultHistory} />
+    <div
+      className="uk-grid-width-small-1-2 uk-grid-width-medium-1-2 uk-grid-width-large-1-2 tm-grid-colors tm-grid-heights"
+      data-uk-grid
+    >
+      <div>
+        <Order history={defaultHistory} />
+      </div>
+      <div>
+        <Stock history={defaultHistory} />
+      </div>
     </div>
   );
 }

@@ -1,10 +1,10 @@
 import type {
   Broker, Level, OrderStatus, OrderType, RunningStatus, UnsubscribeId,
-} from '../../../types';
+} from '../../types';
 
 export type {
   Level as OrderDepth, Broker, UnsubscribeId, UnsubscribeFunction,
-} from '../../../types';
+} from '../../types';
 
 export interface Order {
   orderId: string; price: number; volume: number; type: OrderType; status: OrderStatus;

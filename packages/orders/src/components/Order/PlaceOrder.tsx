@@ -1,11 +1,10 @@
 import React from 'react';
 
-function AddOrder() {
+function AddOrder({ price, volume }: { price: number; volume: number; }) {
   return (
-    <div className="uk-margin uk-search">
-      <div uk-form-custom="target: true" className="uk-form-custom uk-first-column">
-        order component
-      </div>
+    <div className="uk-margin Modal">
+      <input value={price} />
+      <input value={volume} />
     </div>
   );
 }

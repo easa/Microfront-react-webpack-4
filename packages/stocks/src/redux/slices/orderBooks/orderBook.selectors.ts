@@ -17,14 +17,7 @@ export const selectUserOrderBooks = createDraftSafeSelector(
   selectSelf,
   (state) => {
     // eslint-disable-next-line @typescript-eslint/dot-notation
-    const user = state.user['userId'];
-    if (user) {
-      const key = Object.keys(user.orderBooks);
-      if (key) {
-        return Object.values(state.orderBooks)
-          .filter((i) => key.includes(i.orderBookId));
-      }
-    }
+   
     return undefined;
   },
 );

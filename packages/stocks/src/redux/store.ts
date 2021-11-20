@@ -1,11 +1,9 @@
 import { configureStore } from '@reduxjs/toolkit';
-import userReducer from './slices/users/userSlice';
 import orderBookReducer from './slices/orderBooks/orderBook.slice';
 
 export const store = configureStore({
   // TODO Avoid unserializable items
   reducer: {
-    user: userReducer,
     orderBooks: orderBookReducer,
   },
 });
