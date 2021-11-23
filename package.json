@@ -6,7 +6,8 @@
   "author": "easa <eisanodehi@gmail.com>",
   "scripts": {
     "bootstrap": "lerna bootstrap",
-    "build": "tsc -b packages/container",
+    "build": "lerna build",
+    "publish": "copy-build.bat",
     "test": "lerna run test",
     "clean": "npx rimraf packages/**/lib"
   },
