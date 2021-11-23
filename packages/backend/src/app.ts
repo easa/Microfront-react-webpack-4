@@ -2,7 +2,9 @@ import http from 'http';
 import express from 'express';
 import WebSocket from 'ws';
 import cors from 'cors';
-import { orderBook, order, errorHandling } from './routers';
+import {
+  orderBook, order, errorHandling, auth0,
+} from './routers';
 import socketApp from './webSocket';
 import { logger } from './logger';
 
@@ -17,6 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => res.json({ ok: 'ok' }));
 
+app.use(auth0);
 app.use(orderBook);
 app.use(order);
 app.use(errorHandling);

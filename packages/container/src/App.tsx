@@ -1,9 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Suspense } from 'react';
 import './App.css';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Switch, Router, Route } from "react-router-dom";
 import { createBrowserHistory, History } from "history";
 import MicroFrontend from "./MicroFrontend";
+import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+// import { ThemeProvider, createMuiTheme } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#de1bb7',
+    },
+    secondary: {
+      main: '#de1b1b',
+    },
+  },
+});
+
 const defaultHistory = createBrowserHistory();
 
 const {
@@ -45,37 +58,38 @@ function Home({ history }: { history: History }) {
   );
 }
 
-function App2() {
-  return (
-    <BrowserRouter>
-      <React.Fragment>
-        <Routes>
-          <Route path="/" element={<Home history={defaultHistory} />} />
-          <Route path="/blogdetail/:blogid" element={<BlogDetail history={defaultHistory} />} />
-        </Routes>
-      </React.Fragment>
-    </BrowserRouter>
-  );
-}
+// function App2() {
+//   return (
+//     <BrowserRouter>
+//       <React.Fragment>
+//         <Routes>
+//           <Route path="/" element={<Home history={defaultHistory} />} />
+//           <Route path="/blogdetail/:blogid" element={<BlogDetail history={defaultHistory} />} />
+//         </Routes>
+//       </React.Fragment>
+//     </BrowserRouter>
+//   );
+// }
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ThemeProvider theme={theme}>
+      <Router history={defaultHistory}>
+        <Suspense fallback={<h1>Loading...</h1>}>
+          <Switch>
+            <Route exact component={Home} path="/" />
+            <Route path="/order">
+              <Order history={defaultHistory} />
+            </Route>
+            <Route path="/stock">
+              <Stock history={defaultHistory} />
+            </Route>
+            {/* <Route component={SelectCity} path="/select-city" />
+          <Route component={CityPage} path="/:city" /> */}
+          </Switch>
+        </Suspense>
+      </Router>
+    </ThemeProvider>
+  )
 }
 
-export default App2;
+export default App;
