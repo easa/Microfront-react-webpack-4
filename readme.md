@@ -3,21 +3,21 @@
 This is a sample 'monorepo' (also it can be use with multirepo) to demonstrate an microfrontend application
 using Webpack v4, react, react-app-rewired and material-ui.  
 Easy to use:
-## cli:
-On root directory use these commands:
+## cli: 
 
-1- `npm install` to install lerna (the repo manager)
-1- `npm run bootstrap` this would install dependencies for all packages with the help of leran
+On root directory use these commands:  
 
-1- `npm run start` this would run project in development mode
+1. `npm install` to install lerna (the repo manager)
+1. `npm run bootstrap` this would install dependencies for all packages with the help of leran
+1. `npm run start` this would run project in development mode
+1. `npm run build` this would build all projects
+1. `npm run publish` this would copy files to production folder
+1. `npm run start:prod` this would run the application that were build at the previous step
+1. `npm run clean` this would clean repository to a fresh start  
 
-1- `npm run build` this would build all projects
-1- `npm run publish` this would copy files to production folder
-1- `npm run start:prod` this would run the application that were build at the previous step
-1- `npm run clean` this would clean repository to a fresh start
 
 if dependencies didn't installed by bootstrap command (because of low node version) then use this:
-1- `npm run init` this would run npm install on all packages
+1. `npm run init` this would run npm install on all packages
 
 
 ## what to do
