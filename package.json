@@ -5,13 +5,17 @@
   "license": "MIT",
   "author": "easa <eisanodehi@gmail.com>",
   "scripts": {
+    "start": "concurrently  \"cd packages/container & npm start\"  \"cd packages/orders & npm start\"  \"cd packages/stocks & npm start\"",
+    "start:prod": "cd packages/output & npm start",
     "bootstrap": "lerna bootstrap",
-    "build": "lerna build",
+    "build": "lerna run build",
     "publish": "copy-build.bat",
     "test": "lerna run test",
+    "init": "lerna exec npm install",
     "clean": "npx rimraf packages/**/lib"
   },
   "devDependencies": {
+    "concurrently": "^6.4.0",
     "lerna": "^4.0.0"
   }
 }

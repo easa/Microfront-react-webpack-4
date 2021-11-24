@@ -4,6 +4,7 @@ import { Switch, Router, Route } from "react-router-dom";
 import { createBrowserHistory, History } from "history";
 import MicroFrontend from "./MicroFrontend";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
+import SimpleMenu from './containers/header/header';
 // import { ThemeProvider, createMuiTheme } from '@material-ui/styles';
 
 const theme = createMuiTheme({
@@ -32,13 +33,13 @@ function Stock({ history }: { history: History }) {
   return <MicroFrontend history={history} host={blogHost} name="Stock" />;
 }
 
-function BlogDetail({ history }: { history: History }) {
-  return (
-    <div>
-      <MicroFrontend history={history} host={blogHost} name="Stock" />
-    </div>
-  );
-}
+// function BlogDetail({ history }: { history: History }) {
+//   return (
+//     <div>
+//       <MicroFrontend history={history} host={blogHost} name="Stock" />
+//     </div>
+//   );
+// }
 
 
 function Home({ history }: { history: History }) {
@@ -74,6 +75,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router history={defaultHistory}>
+        <SimpleMenu />
         <Suspense fallback={<h1>Loading...</h1>}>
           <Switch>
             <Route exact component={Home} path="/" />
