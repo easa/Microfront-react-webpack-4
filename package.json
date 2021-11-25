@@ -8,11 +8,12 @@
     "start": "concurrently  \"cd packages/container & npm start\"  \"cd packages/orders & npm start\"  \"cd packages/stocks & npm start\" \"cd packages/authfront & npm start\"",
     "start:prod": "cd packages/output & npm start",
     "bootstrap": "lerna bootstrap",
+    "prebuild": "cd packages/pubsub & npm run build",
     "build": "lerna run build",
     "publish": "copy-build.bat",
     "test": "lerna run test",
     "init": "lerna exec npm install",
-    "clean": "npx rimraf packages/**/lib"
+    "clean": "npx rimraf packages/**/node_modules & npx rimraf packages/**/lib & npx rimraf packages/**/build"
   },
   "devDependencies": {
     "concurrently": "^6.4.0",
