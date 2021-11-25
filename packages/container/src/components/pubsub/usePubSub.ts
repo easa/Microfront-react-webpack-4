@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { publish, subscriber, pubsubChannels } from "@ksr/pubsub";
+import { useDispatch } from "react-redux";
+import { registerUser, unRegisterUser } from "../../redux/slices/user.slice";
 
 interface Order { type: 'BUY' | 'SELL'; volume: number; price: number };
 interface UserAuth { id: string; token: string };
@@ -12,17 +14,18 @@ type LoginState = {
 function usePubSub() {
   const [auth, setAuth] = useState<LoginState>(() => ({ status: 'initial' }));
   const [state, setState] = useState<Order[]>(() => ([]));
+  const dispatch = useDispatch();
   useEffect(() => {
     const subscribers = [
       subscriber(pubsubChannels.loggedIn, ({ id, token }: UserAuth) => {
-        const status: Status = 'registered';
-        const authValue = { user: { id, token }, status };
-        setAuth(authValue);
+        const authValue: LoginState = { user: { id, token }, status: 'registered' };
+        dispatch(registerUser({ user: authValue }));
         publish(pubsubChannels.mainAuth, authValue);
+        setAuth(authValue);
       }),
       subscriber(pubsubChannels.loggedOut, () => {
-        const status: Status = 'unregistered';
-        const authValue = { user: undefined, status };
+        const authValue: LoginState = { user: undefined, status: 'unregistered' };
+        dispatch(unRegisterUser());
         setAuth(authValue);
         publish(pubsubChannels.mainAuth, authValue);
       }),
