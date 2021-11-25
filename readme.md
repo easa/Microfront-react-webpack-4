@@ -27,7 +27,7 @@ if dependencies didn't installed by bootstrap command (because of low node versi
 - [x] run the micro frontend project with configs
 - [x] Show the component of the stock!
 - [x] add the page for place order (simple one)
-- [ ] add redux state to stocks`
+- [ ] add redux middleware`
 
 
 
@@ -36,6 +36,6 @@ if dependencies didn't installed by bootstrap command (because of low node versi
 | request | status | description |
 | --- | --- | --- |
 | Build run | done | run build on "/", run publish on "/", run start on "/output" |
-| Messaging Hook | doing | a simple package to communicate through projects |
-| Auth hook | idle |  |
+| Messaging Hook | done | a simple package to communicate through projects |
+| Auth hook | done | now the login (in another package) is integrated with the container |
 | Theme Hook | idle |  |
