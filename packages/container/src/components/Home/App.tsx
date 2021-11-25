@@ -60,6 +60,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <Router history={defaultHistory}>
         <SimpleMenu />
+        <div style={{ marginTop: "100px" }}></div>
         <Auth history={defaultHistory} />
         {user?.id &&
           <Suspense fallback={<h1>Loading...</h1>}>

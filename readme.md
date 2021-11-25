@@ -9,8 +9,8 @@ On root directory use these commands:
 
 1. `npm install` to install lerna (the repo manager)
 1. `npm run bootstrap` this would install dependencies for all packages with the help of leran
-1. `npm run start` this would run project in development mode
 1. `npm run build` this would build all projects
+1. `npm run start` this would run project in development mode
 1. `npm run publish` this would copy files to production folder
 1. `npm run start:prod` this would run the application that were build at the previous step
 1. `npm run clean` this would clean repository to a fresh start  

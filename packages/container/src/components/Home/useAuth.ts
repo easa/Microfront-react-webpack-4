@@ -4,13 +4,16 @@ import { subscriber, pubsubChannels } from '@ksr/pubsub';
 type User = { id: string; token: string; };
 
 function useAuth() {
-  const [user, setUser] = useState<undefined | User>(undefined)
+  const [userState, setUser] = useState<undefined | User>(undefined)
   useEffect(() => {
-    subscriber(pubsubChannels.loggedIn, (data: User) => {
-      setUser(data)
+    const unsubscribe = subscriber(pubsubChannels.loggedIn, (data: { user: User }) => {
+      console.log({ data })
+      setUser(data.user)
     })
-  }, [])
-  return { user }
+    return unsubscribe;
+  }, []);
+
+  return { user: userState }
 }
 
 export default useAuth;

@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar } from "@material-ui/core";
+import { AppBar, MenuList, Toolbar } from "@material-ui/core";
 
 export default function SimpleMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -17,10 +17,10 @@ export default function SimpleMenu() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar>
       <Toolbar>
-        <Link to="/"> Home </Link>
-        <Link to="/order"> order </Link>
+        <Link to="/"> Home </Link> {' '}|{' '}
+        <Link to="/order"> order </Link> {' '}|{' '}
         <Link to="/stock"> stock </Link>
         <Button
           aria-controls="simple-menu"

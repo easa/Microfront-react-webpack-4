@@ -6,11 +6,12 @@ function useLogin() {
   const [password, setPassword] = useState<string>('');
 
   const submitCredential = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    fetch('') // TODO
-      .then(i => i.json())
-      .then((user) => {
-        publish(pubsubChannels.loggedIn, { user })
-      })
+    publish(pubsubChannels.loggedIn, { user: { id: '123', token: '123' } });
+    // fetch('') // TODO
+    //   .then(i => i.json())
+    //   .then((user) => {
+    //     publish(pubsubChannels.loggedIn, { user })
+    //   })
   };
 
   const onChangeUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
