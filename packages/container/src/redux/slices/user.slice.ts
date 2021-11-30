@@ -5,6 +5,7 @@ interface State {
   user?: {
     id: string;
     name: string;
+    photo: string;
     token: string;
   };
   status: 'initial' | 'registered' | 'unregistered';
@@ -30,10 +31,10 @@ export const userSlice = createSlice({
 
 export const { registerUser, unRegisterUser } = userSlice.actions;
 
-const selectSelf = (state: State) => state
+const selectSelf = (state: { user: State }) => state
 export const userSelector = createDraftSafeSelector(
   selectSelf,
-  (state) => state.user
+  (state) => state.user?.user
 )
 
 export default userSlice.reducer;

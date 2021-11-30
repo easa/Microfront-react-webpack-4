@@ -5,8 +5,11 @@ function MicroFrontend({ name, host, history }) {
     const scriptId = `micro-frontend-script-${name}`;
 
     const renderMicroFrontend = () => {
-
-      window[`render${name}`](`${name}-container`, history);
+      if (typeof window[`render${name}`] === 'function') {
+        window[`render${name}`](`${name}-container`, history);
+      } else {
+        console.error(`can't load "${name}" package!`, window[`render${name}`])
+      }
     };
 
     if (document.getElementById(scriptId)) {

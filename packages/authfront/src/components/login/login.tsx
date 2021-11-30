@@ -2,7 +2,7 @@ import React from 'react';
 import useLogin from './useLogin';
 import { Paper, Grid, TextField, Checkbox, FormControlLabel, Button } from '@material-ui/core';
 
-function Login(props: { history?: unknown }) {
+function Login() {
   const { username,
     password,
     submitCredential,

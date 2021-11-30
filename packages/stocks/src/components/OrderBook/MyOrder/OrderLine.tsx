@@ -5,7 +5,7 @@ import { Order } from '../types';
 function OrderLine({
   orderId, type, volume, price,
 }: Order) {
-  const [isLine, setIsLine] = useState<boolean>(false);
+  const [isLine] = useState<boolean>(false);
   const handleDeleteOrder = (id: string) => {
     let event = new CustomEvent("deleteOrder", { detail: { orderId } });
     dispatchEvent(event);

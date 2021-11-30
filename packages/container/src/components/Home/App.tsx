@@ -5,7 +5,8 @@ import MicroFrontend from "../../MicroFrontend";
 import { ThemeProvider, createMuiTheme } from '@material-ui/core';
 import SimpleMenu from '../header/header';
 import useAuth from './useAuth';
-
+import { userSelector } from '../../redux/slices/user.slice';
+import { useSelector } from 'react-redux';
 const theme = createMuiTheme({
   palette: {
     primary: {
@@ -55,13 +56,17 @@ function Home({ history }: { history: History }) {
 }
 
 function App() {
-  const { user } = useAuth();
+  useAuth();
+  const user = useSelector(userSelector);
+
   return (
     <ThemeProvider theme={theme}>
       <Router history={defaultHistory}>
         <SimpleMenu />
         <div style={{ marginTop: "100px" }}></div>
-        <Auth history={defaultHistory} />
+        <Suspense fallback={<div />}>
+          <Auth history={defaultHistory} />
+        </Suspense>
         {user?.id &&
           <Suspense fallback={<h1>Loading...</h1>}>
             <Switch>

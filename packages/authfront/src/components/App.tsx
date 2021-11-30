@@ -2,16 +2,19 @@
 import React from 'react';
 import Login from './login/login';
 import useApp from './useApp';
-import { ThemeProvider } from '@material-ui/core'
+// import { ThemeProvider } from '@material-ui/core'
 
-function App(props: { history?: unknown }) {
+function App() {
   // @ts-ignore
-  const theme = window.muiTheme;
+
+  // const theme = useMemo<any>(() => window.muiTheme, []);
   const { user } = useApp();
   return (
-    <ThemeProvider theme={theme}>
+    // <ThemeProvider theme={theme}>
+    <>
       {!user?.id && <Login />}
-    </ThemeProvider>
+    </>
+    // </ThemeProvider>
   );
 }
 

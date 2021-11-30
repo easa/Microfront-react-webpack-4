@@ -1,10 +1,9 @@
 import React from 'react';
-import logo from './logo.svg';
-
 import OrderBook from './components/OrderBook/Index';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import { Button } from '@material-ui/core'
+
 function App() {
   return (
     <Provider store={store}>

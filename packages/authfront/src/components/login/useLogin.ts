@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import { publish, pubsubChannels } from '@ksr/pubsub';
 
 function useLogin() {
   const [username, setUsername] = useState<string>('');
   const [password, setPassword] = useState<string>('');
 
-  const submitCredential = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    publish(pubsubChannels.loggedIn, { user: { id: '123', token: '123' } });
-    // fetch('') // TODO
-    //   .then(i => i.json())
-    //   .then((user) => {
-    //     publish(pubsubChannels.loggedIn, { user })
-    //   })
-  };
+  const submitCredential = useCallback((event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    publish(pubsubChannels.loggedIn, {
+      user: {
+        name: username,
+        id: `id${username}`,
+        token: password,
+        photo: 'https://github.com/easa/private/raw/master/pic/me/70.jpg',
+      }
+    });
+  }, [password, username]);
 
   const onChangeUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newUsername = event.target.value;
